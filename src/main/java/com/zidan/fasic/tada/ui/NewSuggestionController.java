@@ -20,18 +20,18 @@ public class NewSuggestionController {
     private DictionaryRepository productRepository;
 
     private String abbreviation;
-    private String fullText; // explanation
-    private String description; // notes
+    private String explanation;
+    private String notes;
 
-    public String confirm() {
-        DictionaryEntity dictionaryEntity = productRepository.findByAbbreviationAndExplanationAndNotes(abbreviation, fullText, description);
+    public String addSuggestion() {
+        DictionaryEntity dictionaryEntity = productRepository.findByAbbreviationAndExplanationAndNotes(abbreviation, explanation, notes);
         if (dictionaryEntity != null) {
             dictionaryEntity.setHitcount(dictionaryEntity.getHitcount() + 1);
         } else {
             dictionaryEntity = new DictionaryEntity();
             dictionaryEntity.setAbbreviation(abbreviation);
-            dictionaryEntity.setExplanation(fullText);
-            dictionaryEntity.setNotes(description);
+            dictionaryEntity.setExplanation(explanation);
+            dictionaryEntity.setNotes(notes);
 
             dictionaryEntity.setHitcount(1L);
             dictionaryEntity.setStatus("suggested");
@@ -50,19 +50,19 @@ public class NewSuggestionController {
         this.abbreviation = abbreviation;
     }
 
-    public String getFullText() {
-        return fullText;
+    public String getExplanation() {
+        return explanation;
     }
 
-    public void setFullText(String fullText) {
-        this.fullText = fullText;
+    public void setExplanation(String explanation) {
+        this.explanation = explanation;
     }
 
-    public String getDescription() {
-        return description;
+    public String getNotes() {
+        return notes;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }
