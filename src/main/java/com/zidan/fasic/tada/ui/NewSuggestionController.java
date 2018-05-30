@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.sql.Timestamp;
+
 @Scope(value = "session")
 @Component(value = "newSuggerstionController")
 @ELBeanName(value = "newSuggerstionController")
@@ -18,17 +20,26 @@ public class NewSuggestionController {
     private DictionaryRepository productRepository;
 
     private String abbreviation;
-    private String fullText;
-    private String description;
+    private String fullText; // explanation
+    private String description; // notes
 
     public String confirm() {
-        DictionaryEntity dictionaryEntity = new DictionaryEntity();
-        dictionaryEntity.setAbbreviation(abbreviation);
-        dictionaryEntity.setExplanation(fullText);
-        dictionaryEntity.setNotes(description);
+        DictionaryEntity dictionaryEntity = productRepository.findByAbbreviationAndExplanationAndNotes(abbreviation, fullText, description);
+        if (dictionaryEntity != null) {
+            dictionaryEntity.setHitcount(dictionaryEntity.getHitcount() + 1);
+        } else {
+            dictionaryEntity = new DictionaryEntity();
+            dictionaryEntity.setAbbreviation(abbreviation);
+            dictionaryEntity.setExplanation(fullText);
+            dictionaryEntity.setNotes(description);
+
+            dictionaryEntity.setHitcount(1L);
+            dictionaryEntity.setStatus("suggested");
+        }
+
         productRepository.save(dictionaryEntity);
-        return "/product-list.xhtml?faces-redirect=true";
-   }
+        return "/dictionary-list.xhtml?faces-redirect=true";
+    }
 
 
     public String getAbbreviation() {

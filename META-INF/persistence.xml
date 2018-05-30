@@ -6,8 +6,6 @@
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/tada"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-            <property name="hibernate.connection.username"/>
-            <property name="hibernate.connection.password"/>
         </properties>
     </persistence-unit>
 </persistence>

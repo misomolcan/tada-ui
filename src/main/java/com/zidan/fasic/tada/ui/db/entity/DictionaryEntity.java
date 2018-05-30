@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by viktor on 30.5.2018.
  */
 @Entity
-@Table(name = "dictionary", schema = "tada", catalog = "")
+@Table(name = "dictionary", schema = "tada")
 public class DictionaryEntity {
     private Integer id;
     private String abbreviation;
@@ -18,6 +18,7 @@ public class DictionaryEntity {
     private Long hitcount;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     public Integer getId() {
         return id;
