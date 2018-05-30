@@ -56,7 +56,7 @@ public class UserController {
 
     public void logout(ActionEvent event){
         FacesMessage message = null;
-        loggedIn = true;
+        loggedIn = false;
         message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Logged out ", userName);
 
         FacesContext.getCurrentInstance().addMessage(null, message);
