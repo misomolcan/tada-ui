@@ -1114,7 +1114,7 @@ ul.ui-menu-child {
 .panelGridNoBorder.ui-panelgrid > * > tr,
 .panelGridNoBorder.ui-panelgrid .ui-panelgrid-cell {
     border: none;
-    background-color: white;
+    background-color: #ededed;
     padding: 20px;
 }
 
@@ -1149,4 +1149,21 @@ ul.ui-menu-child {
 
 .menuDesc {
     font-size: 15px;
+}
+
+.newSuggestionInputTextColumn {
+    width: 50%;
+    text-align: left;
+}
+
+.newSuggestionInputText {
+    width: 100%;
+}
+
+.newSuggestionOutputTextColumn {
+    width: 20%;
+}
+
+.newSuggestionPanelGrid {()
+    width: 100%;
 }

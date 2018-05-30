@@ -10,14 +10,26 @@
     <ui:define name="content">
         <h:form id="newSuggestionForm">
             <p:panel header="NEW SUGGESTION">
-                <h:panelGrid columns="2">
-                    <p:outputLabel for="abbreviation" value="Abbreviation: " />
-                    <p:inputText id="abbreviation" value="#{newSuggerstionController.abbreviation}" />
-                    <p:outputLabel for="fullText" value="Full text: " />
-                    <p:inputText id="fullText" value="#{newSuggerstionController.fullText}" />
-                    <p:outputLabel for="description" value="Description: " />
-                    <p:inputText id="description" value="#{newSuggerstionController.description}" />
-                    <h:commandButton value="Confirm" action="#{newSuggerstionController.confirm}" />
+                <h:panelGrid columns="2"
+                             styleClass="newSuggestionPanelGrid"
+                             columnClasses="newSuggestionOutputTextColumn, newSuggestionInputTextColumn">
+                    <p:outputLabel for="abbreviation"
+                                   value="Abbreviation: "/>
+                    <p:inputText id="abbreviation"
+                                 value="#{newSuggerstionController.abbreviation}"
+                                 styleClass="newSuggestionInputText"/>
+                    <p:outputLabel for="fullText"
+                                   value="Full text: "/>
+                    <p:inputText id="fullText"
+                                 value="#{newSuggerstionController.fullText}"
+                                 styleClass="newSuggestionInputText"/>
+                    <p:outputLabel for="description"
+                                   value="Description: "/>
+                    <p:inputText id="description"
+                                 value="#{newSuggerstionController.description}"
+                                 styleClass="newSuggestionInputText"/>
+                    <h:commandButton value="Confirm"
+                                     action="#{newSuggerstionController.confirm}"/>
                 </h:panelGrid>
             </p:panel>
         </h:form>
