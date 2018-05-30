@@ -38,7 +38,7 @@ public class NewSuggestionController {
         }
 
         productRepository.save(dictionaryEntity);
-        return "/product-list.xhtml?faces-redirect=true";
+        return "/dictionary-list.xhtml?faces-redirect=true";
     }
 
 
