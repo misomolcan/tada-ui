@@ -24,15 +24,43 @@
                 </div>
                 <p:dataTable id="table"
                              var="dictionaryEntry"
+                             editable="true"
                              value="#{approveSuggerstionController.suggestions}"
                              paginator="true"
                              paginatorAlwaysVisible="false"
                              paginatorPosition="bottom"
                              rows="25"
                              styleClass="root_table">
+
+                    <p:ajax event="rowEditInit" listener="#{approveSuggerstionController.onRowEditInit}"
+                            oncomplete="$('.ui-row-editor span.ui-icon-pencil').each(function(){$(this).css('visibility','hidden')});"/>
+                    <p:ajax event="rowEdit" listener="#{approveSuggerstionController.onRowEdit}"
+                            update="table"
+                            oncomplete="$('.ui-row-editor span.ui-icon-pencil').each(function(){$(this).css('visibility','visible')});"/>
+                    <p:ajax event="rowEditCancel" listener="#{approveSuggerstionController.onRowCancel}" process="@none"
+                            update="table"
+                            onstart="$('.ui-row-editor span.ui-icon-pencil').each(function(){$(this).css('visibility','visible')});"/>
+
                     <p:column headerText="Abbreviation">#{dictionaryEntry.abbreviation}</p:column>
-                    <p:column headerText="Explanation">#{dictionaryEntry.explanation}</p:column>
-                    <p:column headerText="Notes">#{dictionaryEntry.notes}</p:column>
+                    <p:column headerText="Popularity">#{dictionaryEntry.hitcount}</p:column>
+                    <p:column headerText="Explanation">
+                        <p:cellEditor>
+                            <f:facet name="output"><p:outputLabel value="#{dictionaryEntry.explanation}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{dictionaryEntry.explanation}" style="width:100%" label="Explanation"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column headerText="Notes">
+                        <p:cellEditor>
+                            <f:facet name="output"><p:outputLabel value="#{dictionaryEntry.notes}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{dictionaryEntry.notes}" style="width:100%" label="Notes"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column style="text-align: center" headerText="EDIT">
+                        <p:rowEditor saveTitle="Save changes" cancelTitle="Cancel changes"
+                                     style="text-align: center"
+                                     editTitle="Edit"/>
+                    </p:column>
+
                 </p:dataTable>
             </p:panel>
         </h:form>

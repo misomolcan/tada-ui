@@ -7,6 +7,7 @@ import org.ocpsoft.rewrite.annotation.RequestAction;
 import org.ocpsoft.rewrite.el.ELBeanName;
 import org.ocpsoft.rewrite.faces.annotation.Deferred;
 import org.ocpsoft.rewrite.faces.annotation.IgnorePostback;
+import org.primefaces.event.RowEditEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -56,4 +57,29 @@ public class ApproveSuggestionController {
             suggestions = dictionaryRepository.findAllSuggestionsLike("%" + filterString + "%");
         }
     }
+
+    private String explanationBeforeEdit;
+    private String notesBeforeEdit;
+    public void onRowEditInit(RowEditEvent evt){
+        DictionaryEntity beforeEdit = (DictionaryEntity) evt.getObject();
+        explanationBeforeEdit = beforeEdit.getExplanation();
+        notesBeforeEdit = beforeEdit.getNotes();
+    }
+
+    public void onRowEdit(RowEditEvent evt){
+        DictionaryEntity d = (DictionaryEntity) evt.getObject();
+        //update entity
+        dictionaryRepository.save(d);
+
+    }
+
+    public void onRowCancel(RowEditEvent evt){
+        //restore before
+        DictionaryEntity d = (DictionaryEntity) evt.getObject();
+        d.setExplanation(explanationBeforeEdit);
+        d.setNotes(notesBeforeEdit);
+    }
+
+
+
 }
