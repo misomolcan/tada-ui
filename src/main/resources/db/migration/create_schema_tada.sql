@@ -22,5 +22,5 @@ CREATE TABLE `dictionary` (
 --
 
 LOCK TABLES `dictionary` WRITE;
-INSERT INTO `dictionary` VALUES (1,'ASIC','Automation Strategy And Inovation Centre','Software development team.','proposed','2018-05-30 12:08:58',0),(2,'GDU','Global Delivery Unit','','proposed','2018-05-30 12:09:28',1),(3,'FMO','Future Mode of Operation','cc','suggested','2018-05-30 12:15:01',0);
+INSERT INTO `dictionary` VALUES (1,'ASIC','Automation Strategy And Inovation Centre','Software development team.','proposed','2018-05-30 12:08:58',0),(2,'GDU','Global Delivery Unit','','proposed','2018-05-30 12:09:28',1),(3,'FMO','Future Mode of Operation','','suggested','2018-05-30 12:15:01',0);
 UNLOCK TABLES;
