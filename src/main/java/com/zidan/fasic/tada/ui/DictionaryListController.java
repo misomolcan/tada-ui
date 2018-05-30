@@ -1,6 +1,8 @@
 package com.zidan.fasic.tada.ui;
 
+import com.zidan.fasic.tada.ui.db.entity.DictionaryEntity;
 import com.zidan.fasic.tada.ui.db.entity.Product;
+import com.zidan.fasic.tada.ui.db.repository.DictionaryRepository;
 import com.zidan.fasic.tada.ui.db.repository.ProductRepository;
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.annotation.RequestAction;
@@ -16,21 +18,21 @@ import java.util.List;
 @Scope(value = "session")
 @Component(value = "productList")
 @ELBeanName(value = "productList")
-@Join(path = "/", to = "/product-list.jsf")
-public class ProductListController {
+@Join(path = "/", to = "/dictionary-list.jsf")
+public class DictionaryListController {
 
     @Autowired
-    private ProductRepository productRepository;
-    private List<Product> products;
+    private DictionaryRepository dictionaryRepository;
+    private List<DictionaryEntity> dictionary;
 
     @Deferred
     @RequestAction
     @IgnorePostback
     public void loadData() {
-        products = productRepository.findAll();
+        dictionary = dictionaryRepository.findAll();
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public List<DictionaryEntity> getProducts() {
+        return dictionary;
     }
 }
