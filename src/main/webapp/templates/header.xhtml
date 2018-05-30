@@ -3,7 +3,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:cc="http://java.sun.com/jsf/composite/templates">
 <body>
 <ui:composition>
     <div id="headerLogo">
@@ -27,6 +28,7 @@
             </h:form>
         </div>
     </div>
+    <cc:menu/>
     <p:dialog header="Login" widgetVar="dlg" resizable="false">
         <h:form id="loginDialogForm">
             <h:panelGrid columns="2" cellpadding="5">
