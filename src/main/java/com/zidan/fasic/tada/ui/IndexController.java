@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-@Scope(value = "session")
+@Scope(value = "request")
 @Component(value = "indexController")
 @ELBeanName(value = "indexController")
 @Join(path = "/", to = "/index.jsf")
@@ -42,7 +42,7 @@ public class IndexController {
         if (entity == null)
             entity = new DictionaryEntity();
         renderResult = true;
-        RequestContext.getCurrentInstance().update("indexForm:abbreviationResult");
+        RequestContext.getCurrentInstance().update("abbreviationResultForm:abbreviationResult");
     }
 
     public void explain() {
@@ -53,7 +53,7 @@ public class IndexController {
         dictionaryRepository.save(dictionaryEntity);
         clearVariables();
         RequestContext.getCurrentInstance().update("searchForm:SearchValue");
-        RequestContext.getCurrentInstance().update("indexForm:abbreviationResult");
+        RequestContext.getCurrentInstance().update("abbreviationResultForm:abbreviationResult");
     }
 
     private void clearVariables() {

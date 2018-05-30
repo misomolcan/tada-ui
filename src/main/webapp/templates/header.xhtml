@@ -28,6 +28,31 @@
             </h:form>
         </div>
     </div>
+    <p:panel id="abbreviationResult" styleClass="blankPanel">
+        <h:form id="abbreviationResultForm">
+            <p:panel rendered="#{indexController.renderResult}" style="margin: 20px">
+                <h:outputText value="Search results:"/><br/><br/>
+
+                <h:outputText value="Not found"
+                              rendered="#{indexController.entity.status == null}"
+                              style="font-size: 20px"/>
+                <p:commandButton value="Request explanation"
+                                 actionListener="#{indexController.explain}"
+                                 rendered="#{indexController.entity.status == null}"/>
+
+                <h:outputText value="Not found, but this abbreviation was already requested"
+                              rendered="#{indexController.entity.status == 'requested' or indexController.entity.status == 'suggested'}"
+                              style="font-size: 20px"/>
+
+                <h:outputText value="#{indexController.entity.explanation}"
+                              rendered="#{indexController.entity.status == 'confirmed'}"
+                              style="font-size: 20px"/>
+                <h:outputText value="#{indexController.entity.notes}"
+                              rendered="#{indexController.entity.status == 'confirmed'}"
+                              style="font-size: 20px"/>
+            </p:panel>
+        </h:form>
+    </p:panel>
     <cc:menu/>
     <p:dialog header="Login" widgetVar="dlg" resizable="false">
         <h:form id="loginDialogForm">
