@@ -53,4 +53,12 @@ public class UserController {
         FacesContext.getCurrentInstance().addMessage(null, message);
         RequestContext.getCurrentInstance().addCallbackParam("loggedIn", loggedIn);
     }
+
+    public void logout(ActionEvent event){
+        FacesMessage message = null;
+        loggedIn = true;
+        message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Logged out ", userName);
+
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
 }

@@ -13,9 +13,8 @@
         </p:link>
         <p:growl id="growl" life="2000" />
         <p:outputLabel styleClass="rightText" value="TADA"/>
-        <h:outputLink  styleClass="rightText" value="javascript:void(0)" onclick="PF('dlg').show();" title="login">
-             <p:outputLabel name="Login" value="Login" />
-        </h:outputLink>
+        <p:commandLink rendered="#{!userController.loggedIn}" id="loginButton" styleClass="rightText" value="Login" update="loginButton, logoutButton" onclick="PF('dlg').show();" title="Login" />
+        <p:commandLink rendered="#{userController.loggedIn}" id="logoutButton" styleClass="rightText" value="Logout" update="loginButton, logoutButton" actionListener="#{userController.logout}" title="Login" />
     </div>
     <div id="topBanner">
         <div id="topBannerCenteredSearch">
@@ -34,7 +33,7 @@
             <h:outputLabel for="password" value="Password:" />
             <p:password id="password" value="#{userController.userPassword}" required="true" label="password" />
             <f:facet name="footer">
-                <p:commandButton value="Login" update="growl" actionListener="#{userController.login}"
+                <p:commandButton value="Login" update="growl, loginButton, logoutButton" actionListener="#{userController.login}"
                                  oncomplete="handleLoginRequest(xhr, status, args)" />
             </f:facet>
         </h:panelGrid>
