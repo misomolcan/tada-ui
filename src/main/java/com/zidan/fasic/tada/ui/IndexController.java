@@ -38,7 +38,7 @@ public class IndexController {
     }
 
     public void search() {
-        entity = dictionaryRepository.findByAbbreviationConfirmed(searchValue);
+        entity = dictionaryRepository.findByAbbreviation(searchValue);
         if (entity == null)
             entity = new DictionaryEntity();
         renderResult = true;
