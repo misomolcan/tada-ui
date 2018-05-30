@@ -23,7 +23,7 @@ public class ProductController {
     public String save() {
         productRepository.save(product);
         product = new Product();
-        return "/product-list.xhtml?faces-redirect=true";
+        return "/dictionary-list.xhtml?faces-redirect=true";
     }
 
     public Product getProduct() {
