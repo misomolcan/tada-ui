@@ -3,10 +3,15 @@ package com.zidan.fasic.tada.ui;
 import com.zidan.fasic.tada.ui.db.entity.DictionaryEntity;
 import com.zidan.fasic.tada.ui.db.repository.DictionaryRepository;
 import org.ocpsoft.rewrite.annotation.Join;
+import org.ocpsoft.rewrite.annotation.RequestAction;
 import org.ocpsoft.rewrite.el.ELBeanName;
+import org.ocpsoft.rewrite.faces.annotation.Deferred;
+import org.ocpsoft.rewrite.faces.annotation.IgnorePostback;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Scope(value = "session")
 @Component(value = "approveSuggerstionController")
@@ -15,52 +20,40 @@ import org.springframework.stereotype.Component;
 public class ApproveSuggestionController {
 
     @Autowired
-    private DictionaryRepository productRepository;
+    private DictionaryRepository dictionaryRepository;
+    private List<DictionaryEntity> suggestions;
+    private String filterString;
 
-    private String abbreviation;
-    private String fullText; // explanation
-    private String description; // notes
 
-    public String confirm() {
-        DictionaryEntity dictionaryEntity = productRepository.findByAbbreviationAndExplanationAndNotes(abbreviation, fullText, description);
-        if (dictionaryEntity != null) {
-            dictionaryEntity.setHitcount(dictionaryEntity.getHitcount() + 1);
+    @Deferred
+    @RequestAction
+    @IgnorePostback
+    public void loadData() {
+        filterString = "";
+        doFilter();
+    }
+
+    public String getFilterString() {
+        return filterString;
+    }
+
+    public void setFilterString(String filterString) {
+        this.filterString = filterString;
+    }
+
+    public List<DictionaryEntity> getSuggestions() {
+        return suggestions;
+    }
+
+    public void setSuggestions(List<DictionaryEntity> suggestions) {
+        this.suggestions = suggestions;
+    }
+
+    public void doFilter() {
+        if(filterString == null || filterString.trim().isEmpty()){
+            suggestions = dictionaryRepository.findAllSuggestionsLike("%");
         } else {
-            dictionaryEntity = new DictionaryEntity();
-            dictionaryEntity.setAbbreviation(abbreviation);
-            dictionaryEntity.setExplanation(fullText);
-            dictionaryEntity.setNotes(description);
-
-            dictionaryEntity.setHitcount(1L);
-            dictionaryEntity.setStatus("suggested");
+            suggestions = dictionaryRepository.findAllSuggestionsLike("%" + filterString + "%");
         }
-
-        productRepository.save(dictionaryEntity);
-        return "/index.xhtml?faces-redirect=true";
-    }
-
-
-    public String getAbbreviation() {
-        return abbreviation;
-    }
-
-    public void setAbbreviation(String abbreviation) {
-        this.abbreviation = abbreviation;
-    }
-
-    public String getFullText() {
-        return fullText;
-    }
-
-    public void setFullText(String fullText) {
-        this.fullText = fullText;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }

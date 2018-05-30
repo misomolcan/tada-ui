@@ -4,6 +4,7 @@ import com.zidan.fasic.tada.ui.db.entity.DictionaryEntity;
 import com.zidan.fasic.tada.ui.db.repository.DictionaryRepository;
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.el.ELBeanName;
+import org.primefaces.push.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -34,7 +35,7 @@ public class NewSuggestionController {
             dictionaryEntity.setNotes(notes);
 
             dictionaryEntity.setHitcount(1L);
-            dictionaryEntity.setStatus("suggested");
+            dictionaryEntity.setStatus(Statuses.SUGGESTED.name());
         }
 
         productRepository.save(dictionaryEntity);

@@ -28,8 +28,8 @@ public class DictionaryListController {
     @RequestAction
     @IgnorePostback
     public void loadData() {
-        dictionary = dictionaryRepository.findAll();
         filterString = "";
+        doFilter();
     }
 
     public List<DictionaryEntity> getDictionary() {
@@ -46,7 +46,7 @@ public class DictionaryListController {
 
     public void doFilter() {
         if(filterString == null || filterString.trim().isEmpty()){
-            dictionary = dictionaryRepository.findAll();
+            dictionary = dictionaryRepository.findByAbbreviationLike("%");
         } else {
             dictionary = dictionaryRepository.findByAbbreviationLike("%" + filterString + "%");
         }
