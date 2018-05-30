@@ -22,15 +22,34 @@ public class DictionaryListController {
     @Autowired
     private DictionaryRepository dictionaryRepository;
     private List<DictionaryEntity> dictionary;
+    private String filterString;
 
     @Deferred
     @RequestAction
     @IgnorePostback
     public void loadData() {
         dictionary = dictionaryRepository.findAll();
+        filterString = "";
     }
 
     public List<DictionaryEntity> getDictionary() {
         return dictionary;
     }
+
+    public String getFilterString() {
+        return filterString;
+    }
+
+    public void setFilterString(String filterString) {
+        this.filterString = filterString;
+    }
+
+    public void doFilter() {
+        if(filterString == null || filterString.trim().isEmpty()){
+            dictionary = dictionaryRepository.findAll();
+        } else {
+            dictionary = dictionaryRepository.findByAbbreviationLike("%" + filterString + "%");
+        }
+    }
+
 }

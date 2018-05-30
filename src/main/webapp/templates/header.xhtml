@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 <body>
 <ui:composition>
@@ -10,7 +11,11 @@
             <h:graphicImage value="/resources/images/T-logo.png" style="float:left;margin-top:12px;" width="73"
                             height="36" alt=""/>
         </p:link>
+        <p:growl id="growl" life="2000" />
         <p:outputLabel styleClass="rightText" value="TADA"/>
+        <h:outputLink  styleClass="rightText" value="javascript:void(0)" onclick="PF('dlg').show();" title="login">
+             <p:outputLabel name="Login" value="Login" />
+        </h:outputLink>
     </div>
     <div id="topBanner">
         <div id="topBannerCenteredSearch">
@@ -21,6 +26,30 @@
             </h:form>
         </div>
     </div>
+    <p:dialog header="Login" widgetVar="dlg" resizable="false">
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel for="username" value="Username:" />
+            <p:inputText id="username" value="#{userController.userName}" required="true" label="username" />
+
+            <h:outputLabel for="password" value="Password:" />
+            <p:password id="password" value="#{userController.userPassword}" required="true" label="password" />
+            <f:facet name="footer">
+                <p:commandButton value="Login" update="growl" actionListener="#{userController.login}"
+                                 oncomplete="handleLoginRequest(xhr, status, args)" />
+            </f:facet>
+        </h:panelGrid>
+    </p:dialog>
+    <script type="text/javascript">
+        function handleLoginRequest(xhr, status, args) {
+            if(args.validationFailed || !args.loggedIn) {
+                PF('dlg').jq.effect("shake", {times:5}, 100);
+            }
+            else {
+                PF('dlg').hide();
+                $('#loginLink').fadeOut();
+            }
+        }
+    </script>
 </ui:composition>
 </body>
 </html>
