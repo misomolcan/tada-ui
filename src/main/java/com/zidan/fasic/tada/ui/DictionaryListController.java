@@ -1,9 +1,7 @@
 package com.zidan.fasic.tada.ui;
 
 import com.zidan.fasic.tada.ui.db.entity.DictionaryEntity;
-import com.zidan.fasic.tada.ui.db.entity.Product;
 import com.zidan.fasic.tada.ui.db.repository.DictionaryRepository;
-import com.zidan.fasic.tada.ui.db.repository.ProductRepository;
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.annotation.RequestAction;
 import org.ocpsoft.rewrite.el.ELBeanName;
@@ -16,8 +14,8 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Scope(value = "session")
-@Component(value = "productList")
-@ELBeanName(value = "productList")
+@Component(value = "dictionaryList")
+@ELBeanName(value = "dictionaryList")
 @Join(path = "/", to = "/dictionary-list.jsf")
 public class DictionaryListController {
 
@@ -32,7 +30,7 @@ public class DictionaryListController {
         dictionary = dictionaryRepository.findAll();
     }
 
-    public List<DictionaryEntity> getProducts() {
+    public List<DictionaryEntity> getDictionary() {
         return dictionary;
     }
 }

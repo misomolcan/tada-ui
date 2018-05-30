@@ -13,20 +13,14 @@
 	<ui:define name="content">
 		<h:form id="form">
 			<p:panel header="Products List">
-				<p:dataTable id="table" var="product" value="#{productList.products}">
+				<p:dataTable id="table" var="dictionaryEntry" value="#{dictionaryList.dictionary}">
 					<p:column>
 						<f:facet name="header"># Id</f:facet>
-						<h:outputText value="#{product.id}" />
+						<h:outputText value="#{dictionaryEntry.id}" />
 					</p:column>
 					<p:column>
 						<f:facet name="header">Name</f:facet>
-						<h:outputText value="#{product.name}" />
-					</p:column>
-					<p:column>
-						<f:facet name="header">Price</f:facet>
-						<h:outputText value="#{product.price}">
-							<f:convertNumber type="currency" currencySymbol="$ " />
-						</h:outputText>
+						<h:outputText value="#{dictionaryEntry.abbreviation}" />
 					</p:column>
 				</p:dataTable>
 			</p:panel>
