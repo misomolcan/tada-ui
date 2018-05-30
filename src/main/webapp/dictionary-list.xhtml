@@ -1,36 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	  xmlns:h="http://xmlns.jcp.org/jsf/html"
-	  xmlns:f="http://xmlns.jcp.org/jsf/core"
-	  xmlns:p="http://primefaces.org/ui">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="layout.xhtml">
-	<ui:define name="content">
-		<h:form id="form">
-			<p:panel header="DICTIONARY">
-				<div class="centeredSearch">
-					<p:inputText placeholder="Search" styleClass="searchBox"/>
-				</div>
-				<p:dataTable id="table"
-							 var="dictionaryEntry"
-							 value="#{dictionaryList.dictionary}"
-							 paginator="true"
-							 paginatorAlwaysVisible="false"
-							 paginatorPosition="bottom"
-							 rows="25"
-							 styleClass="root_table"
-				>
-					<p:column headerText="Abbreviation">#{dictionaryEntry.abbreviation}</p:column>
-					<p:column headerText="Full text">#{dictionaryEntry.explanation}</p:column>
-					<p:column headerText="Description">#{dictionaryEntry.notes}</p:column>
-				</p:dataTable>
-			</p:panel>
-		</h:form>
-	</ui:define>
+    <ui:define name="content">
+        <h:form id="form">
+            <p:panel header="DICTIONARY">
+                <div class="centeredSearch">
+                    <p:inputText placeholder="Search"
+                                 styleClass="searchBox"
+                                 value="#{dictionaryList.filterString}">
+                        <p:ajax event="keyup"
+                                listener="#{dictionaryList.doFilter}"
+                                update="table"/>
+                    </p:inputText>
+                </div>
+                <p:dataTable id="table"
+                             var="dictionaryEntry"
+                             value="#{dictionaryList.dictionary}"
+                             paginator="true"
+                             paginatorAlwaysVisible="false"
+                             paginatorPosition="bottom"
+                             rows="25"
+                             styleClass="root_table">
+                    <p:column headerText="Abbreviation">#{dictionaryEntry.abbreviation}</p:column>
+                    <p:column headerText="Full text">#{dictionaryEntry.explanation}</p:column>
+                    <p:column headerText="Description">#{dictionaryEntry.notes}</p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+    </ui:define>
 </ui:composition>
 </html>
