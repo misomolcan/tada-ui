@@ -7,7 +7,7 @@
 <ui:composition template="layout.xhtml">
     <ui:define name="content">
         <h:form id="newSuggestionForm">
-            <p:panel header="NEW SUGGESTION">
+            <p:panel header="#{userController.loggedIn ? 'ADD TO DICTIONARY' : 'NEW SUGGESTION'}">
                 <h:panelGrid columns="2"
                              styleClass="newSuggestionPanelGrid"
                              columnClasses="newSuggestionOutputTextColumn, newSuggestionInputTextColumn">
@@ -26,7 +26,7 @@
                     <p:inputText id="notes"
                                  value="#{newSuggerstionController.notes}"
                                  styleClass="newSuggestionInputText"/>
-                    <h:commandButton value="Add suggestion"
+                    <h:commandButton value="#{userController.loggedIn ? 'Add to dictionary' : 'Add suggestion'}"
                                      action="#{newSuggerstionController.addSuggestion}"/>
                 </h:panelGrid>
             </p:panel>

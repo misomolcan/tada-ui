@@ -60,6 +60,21 @@
                                      style="text-align: center"
                                      editTitle="Edit"/>
                     </p:column>
+                    <p:column headerText="Action">
+                        <h:panelGroup id="actionsPanel">
+                            <p:commandButton id="confirm" icon="fa fa-check"
+                                             actionListener="#{approveSuggerstionController.confirm(dictionaryEntry)}"
+                                             update="table"
+                                             >
+                            </p:commandButton>
+                            <p:commandButton id="deny" icon="fa fa-close"
+                                             actionListener="#{approveSuggerstionController.deny(dictionaryEntry)}"
+                                             update="table"
+                                            >
+                            </p:commandButton>
+                        </h:panelGroup>
+
+                    </p:column>
 
                 </p:dataTable>
             </p:panel>

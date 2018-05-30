@@ -14,8 +14,8 @@
         </p:commandLink>
         <p:commandLink styleClass="boxMenuButton" action="new-suggestion.xhtml?faces-redirect=true">
             <div>
-                <h:outputText value="NEW SUGGESTION" styleClass="menuName"/><br/>
-                <h:outputText value="Suggest new abbreviation to be added into dictionary catalog" styleClass="menuDesc"/>
+                <h:outputText value="#{userController.loggedIn ? 'ADD TO DICTIONARY' : 'NEW SUGGESTION'}" styleClass="menuName"/><br/>
+                <h:outputText value="#{userController.loggedIn ? 'Add new abbreviation to the dictionary' : 'Suggest new abbreviation to be added into dictionary catalog'}" styleClass="menuDesc"/>
             </div>
         </p:commandLink>
         <p:commandLink rendered="#{userController.loggedIn}" styleClass="boxMenuButton" action="approve-suggestion.xhtml?faces-redirect=true">

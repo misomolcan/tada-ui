@@ -11,4 +11,5 @@ public enum Statuses {
     Statuses(String name) {
         this.name = name;
     }
+
 }

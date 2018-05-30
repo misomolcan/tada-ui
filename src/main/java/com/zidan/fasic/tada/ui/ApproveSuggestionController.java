@@ -80,6 +80,18 @@ public class ApproveSuggestionController {
         d.setNotes(notesBeforeEdit);
     }
 
+    public void confirm(DictionaryEntity d){
+        d.setStatus(Statuses.CONFIRMED.name);
+        dictionaryRepository.save(d);
+        doFilter();
+    }
+
+    public void deny(DictionaryEntity d){
+        d.setStatus(Statuses.DENIED.name);
+        dictionaryRepository.save(d);
+        doFilter();
+    }
+
 
 
 }
