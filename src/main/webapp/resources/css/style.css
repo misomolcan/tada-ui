@@ -76,12 +76,16 @@ body {
 
 #topBanner {
     background-image: url("/resources/images/TADA_APP_BG_PIC.jpg");
+    ackground-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     width: 100%;
     height: 300px;
 }
 
 #topBannerCenteredSearch {
     padding: 100px 84px 60px;
+    text-align: center;
 }
 
 #topBannerCenteredSearch .searchTitle {
