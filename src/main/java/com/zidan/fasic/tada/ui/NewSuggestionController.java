@@ -34,9 +34,9 @@ public class NewSuggestionController {
             dictionaryEntity.setHitcount(1L);
         }
         if (userController.isLoggedIn()) {
-            dictionaryEntity.setStatus(Statuses.CONFIRMED.name());
+            dictionaryEntity.setStatus(Statuses.CONFIRMED.name);
         } else {
-            dictionaryEntity.setStatus(Statuses.SUGGESTED.name());
+            dictionaryEntity.setStatus(Statuses.SUGGESTED.name);
         }
         productRepository.save(dictionaryEntity);
         return "/index.xhtml?faces-redirect=true";
