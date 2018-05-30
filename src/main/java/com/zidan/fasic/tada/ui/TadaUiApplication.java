@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
@@ -14,9 +15,9 @@ import javax.servlet.DispatcherType;
 import java.util.EnumSet;
 
 @EnableAutoConfiguration
-@ComponentScan({"com.zidan.fasic.tada.ui.bean"})
+@ComponentScan({"com.zidan.fasic.tada.ui"})
 @SpringBootApplication
-public class TadaUiApplication {
+public class TadaUiApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TadaUiApplication.class, args);
