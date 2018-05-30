@@ -41,8 +41,15 @@ public class SearchController {
 
     public void search() {
         entity = dictionaryRepository.findByAbbreviation(searchValue);
-        if (entity == null)
+        if (entity == null) {
             entity = new DictionaryEntity();
+        }
+        else {
+            if (entity.getStatus().equals(Statuses.REQUESTED.name)) {
+                entity.setHitcount(entity.getHitcount() + 1);
+                dictionaryRepository.save(entity);
+            }
+        }
         renderResult = true;
         RequestContext.getCurrentInstance().update("abbreviationResultForm:abbreviationResult");
     }
