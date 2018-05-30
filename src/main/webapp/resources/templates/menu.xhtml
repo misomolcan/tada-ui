@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:cc="http://java.sun.com/jsf/composite">
+
+<cc:implementation>
+    <p:panelGrid columns="2" styleClass="panelGridNoBorder">
+        <p:commandLink action="dictionary-list.xhtml?faces-redirect=true">
+            <p:panel styleClass="abbrMenuButton">
+                <h:outputText value="CATALOG" styleClass="menuName"/><br/>
+                <h:outputText value="Abbreviations catalog, their meaning and description" styleClass="menuDesc"/>
+            </p:panel>
+        </p:commandLink>
+        <p:commandLink action="new-suggestion.xhtml?faces-redirect=true">
+            <p:panel styleClass="abbrMenuButton">
+                <h:outputText value="NEW SUGGESTION" styleClass="menuName"/><br/>
+                <h:outputText value="Suggest new abbreviation to be added into dictionary catalog" styleClass="menuDesc"/>
+            </p:panel>
+        </p:commandLink>
+    </p:panelGrid>
+</cc:implementation>
+</ui:composition>

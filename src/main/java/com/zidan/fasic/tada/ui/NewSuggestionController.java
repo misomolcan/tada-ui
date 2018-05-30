@@ -27,8 +27,6 @@ public class NewSuggestionController {
         dictionaryEntity.setExplanation(fullText);
         dictionaryEntity.setNotes(description);
         productRepository.save(dictionaryEntity);
-//        productRepository.save(product);
-//        product = new Product();
         return "/product-list.xhtml?faces-redirect=true";
    }
 

@@ -1686,6 +1686,8 @@ ul.ui-menu-child {
 .panelGridNoBorder.ui-panelgrid > * > tr,
 .panelGridNoBorder.ui-panelgrid .ui-panelgrid-cell {
     border: none;
+    background-color: white;
+    padding: 20px;
 }
 
 .blankPanel.ui-panel,
@@ -1705,4 +1707,18 @@ ul.ui-menu-child {
 .parameterLabel {
     width: 75px;
     vertical-align: top;
+}
+
+.abbrMenuButton {
+    width: 250px;
+    height: 150px;
+    background-color: #c8c8c8 !important;
+}
+
+.menuName {
+    font-size: 20px;
+}
+
+.menuDesc {
+    font-size: 15px;
 }
