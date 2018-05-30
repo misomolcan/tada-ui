@@ -12,8 +12,16 @@
 <ui:composition template="layout.xhtml">
 	<ui:define name="content">
 		<h:form id="form">
-			<p:panel header="Products List">
-				<p:dataTable id="table" var="dictionaryEntry" value="#{dictionaryList.dictionary}">
+			<p:panel header="Dictionary">
+				<p:dataTable id="table"
+							 var="dictionaryEntry"
+							 value="#{dictionaryList.dictionary}"
+							 paginator="true"
+							 paginatorAlwaysVisible="false"
+							 paginatorPosition="bottom"
+							 rows="25"
+							 styleClass="root_table highlightTable"
+				>
 					<p:column headerText="Name">#{dictionaryEntry.abbreviation}</p:column>
 					<p:column headerText="Explanation">#{dictionaryEntry.explanation}</p:column>
 					<p:column headerText="Description">#{dictionaryEntry.notes}</p:column>

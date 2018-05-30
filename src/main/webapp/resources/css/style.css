@@ -309,11 +309,11 @@ body {
 }
 
 .ui-datatable-even {
-    background: #dbdbdb;
+    background: #f0f0f0;
 }
 
 .ui-datatable-odd {
-    background: #ebebeb;
+    background: #f7f7f7;
 }
 
 .ui-datatable thead th, .ui-datatable tfoot td {
@@ -397,6 +397,8 @@ body {
     border-bottom: 2px solid #737373;
     font-size: 15px;
     color: #737373;
+    background: none !important;
+
 }
 
 .ui-inputfield {
