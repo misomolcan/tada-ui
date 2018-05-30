@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-@Scope(value = "request")
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
+@Scope(value = "session")
 @Component(value = "searchController")
 @ELBeanName(value = "searchController")
 public class SearchController {
@@ -51,12 +54,15 @@ public class SearchController {
         dictionaryEntity.setStatus(Statuses.REQUESTED.name());
         dictionaryRepository.save(dictionaryEntity);
         clearVariables();
-        RequestContext.getCurrentInstance().update("searchForm:SearchValue");
-        RequestContext.getCurrentInstance().update("abbreviationResultForm:abbreviationResult");
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Success", "Your abbreviation has been submitted.");
+        FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
     private void clearVariables() {
         renderResult = false;
         entity = null;
+        searchValue = null;
+        RequestContext.getCurrentInstance().update("searchForm:searchValue");
+        RequestContext.getCurrentInstance().update("abbreviationResultForm:abbreviationResult");
     }
 }

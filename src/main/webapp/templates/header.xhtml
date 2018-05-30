@@ -12,7 +12,7 @@
             <h:graphicImage value="/resources/images/T-logo.png" style="float:left;margin-top:12px;" width="73"
                             height="36" alt=""/>
         </p:link>
-        <p:growl id="growl" life="2000" />
+        <p:growl id="growl" life="2000" autoUpdate="true"/>
         <p:outputLabel styleClass="rightText" value="TADA"/>
         <h:form id="loginButtonForm">
             <p:commandLink rendered="#{!userController.loggedIn}" id="loginButton" styleClass="rightText" style="font-size: 0.6em;" value="(Login)" update="loginButton, logoutButton" onclick="PF('dlg').show();" title="Login" />
@@ -23,7 +23,7 @@
         <div id="topBannerCenteredSearch">
             <h:form id="searchForm">
                 <h:outputText value="Enter the abbreviation here to search" styleClass="searchTitle"/><br/><br/>
-                <p:inputText placeholder="Search" styleClass="searchBox" value="#{searchController.searchValue}"/>
+                <p:inputText id="searchValue" placeholder="Search" styleClass="searchBox" value="#{searchController.searchValue}"/>
                 <p:commandButton value="Search" actionListener="#{searchController.search}" style="height: 35px"/>
             </h:form>
         </div>
@@ -32,11 +32,9 @@
         <p:panel id="abbreviationResult" styleClass="abbreviationResult">
             <p:panel styleClass="abbreviationResultContent" header="Search results:" rendered="#{searchController.renderResult}">
                 <p:panel rendered="#{searchController.entity.status == null}" style="margin-top: 5px;">
-                    <h:outputText value="Not found"
+                    <h:outputText value="Not found - "
                                   style="font-size: 20px"/>
-                    <br />
-                    <p:commandButton value="Request explanation"
-                                     actionListener="#{searchController.explain}"/>
+                    <p:commandLink value="click to request explanation" actionListener="#{searchController.explain}" style="font-size: 20px; color: #e5007d;"/>
                 </p:panel>
                 <p:panel rendered="#{searchController.entity.status == 'requested' or searchController.entity.status == 'suggested'}" style="margin-top: 5px;">
                     <h:outputText value="Not found, but this abbreviation was already requested"
