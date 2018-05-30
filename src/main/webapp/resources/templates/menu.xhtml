@@ -5,19 +5,19 @@
                 xmlns:cc="http://java.sun.com/jsf/composite">
 
 <cc:implementation>
-    <p:panelGrid columns="2" styleClass="panelGridNoBorder">
-        <p:commandLink action="dictionary-list.xhtml?faces-redirect=true">
-            <p:panel styleClass="abbrMenuButton">
-                <h:outputText value="CATALOG" styleClass="menuName"/><br/>
+    <p:panel styleClass="boxMenuPanel">
+        <p:commandLink styleClass="boxMenuButton" action="dictionary-list.xhtml?faces-redirect=true">
+            <div>
+                <h:outputText value="DICTIONARY" styleClass="menuName"/><br/>
                 <h:outputText value="Abbreviations catalog, their meaning and description" styleClass="menuDesc"/>
-            </p:panel>
+            </div>
         </p:commandLink>
-        <p:commandLink action="new-suggestion.xhtml?faces-redirect=true">
-            <p:panel styleClass="abbrMenuButton">
+        <p:commandLink styleClass="boxMenuButton" action="new-suggestion.xhtml?faces-redirect=true">
+            <div>
                 <h:outputText value="NEW SUGGESTION" styleClass="menuName"/><br/>
                 <h:outputText value="Suggest new abbreviation to be added into dictionary catalog" styleClass="menuDesc"/>
-            </p:panel>
+            </div>
         </p:commandLink>
-    </p:panelGrid>
+    </p:panel>
 </cc:implementation>
 </ui:composition>
