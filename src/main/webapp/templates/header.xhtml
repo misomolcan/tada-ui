@@ -5,11 +5,20 @@
       xmlns:p="http://primefaces.org/ui">
 <body>
 <ui:composition>
-    <p:link id="logoLink" href="index.xhtml">
-        <h:graphicImage value="/resources/images/T-logo.png" style="float:left;margin-top:12px;" width="73"
-                        height="36"/>
-    </p:link>
-    <p:outputLabel styleClass="rightText" value="TADA"/>
+    <div id="headerLogo">
+        <p:link id="logoLink" href="index.xhtml">
+            <h:graphicImage value="/resources/images/T-logo.png" style="float:left;margin-top:12px;" width="73"
+                            height="36"/>
+        </p:link>
+        <p:outputLabel styleClass="rightText" value="TADA"/>
+    </div>
+    <div id="headerSearch">
+        <h:graphicImage value="/resources/images/TADA_APP_BG_PIC.jpg" style="width: 100%"/>
+        <div class="centeredSearch">
+            <h:outputText value="Enter the abbreviation here to search" styleClass="searchTitle"/><br/><br/>
+            <p:inputText placeholder="Search" styleClass="searchBox"/>
+        </div>
+    </div>
 </ui:composition>
 </body>
 </html>
