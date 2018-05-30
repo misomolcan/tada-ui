@@ -309,17 +309,17 @@ body {
 }
 
 .ui-datatable-even {
-    background: #f0f0f0;
+    background: #ffffff;
 }
 
 .ui-datatable-odd {
-    background: #f7f7f7;
+    background: #ffffff;
 }
 
 .ui-datatable thead th, .ui-datatable tfoot td {
     color: white;
-    background-color: #b0b0b0;
-    background: #b0b0b0;
+    background-color: #e0e0e0 !important;
+    background: #e0e0e0 !important;
     height: 10px;
     text-shadow: none;
     padding: 1px 5px;
@@ -340,8 +340,8 @@ body {
 }
 
 .ui-datatable.root_table thead th {
-    text-transform: uppercase;
     height: 30px;
+    text-align: left;
 }
 
 .ui-datatable.inner_table thead th {
@@ -392,13 +392,24 @@ body {
     border-right: none !important;
 }
 
+.ui-datatable.root_table th {
+    border: none !important;
+}
+
+.ui-datatable.root_table td {
+    border: none !important;
+}
+
 .ui-panel-titlebar.ui-widget-header {
     border: 0px;
     border-bottom: 2px solid #737373;
     font-size: 15px;
     color: #737373;
     background: none !important;
+}
 
+.ui-panel-title {
+    text-transform: capitalize;
 }
 
 .ui-inputfield {
@@ -985,11 +996,11 @@ ul.ui-menu-child {
 }
 
 .highlightTable .ui-datatable-even:hover {
-    background: #c9c9c9;
+    background: #F0F0F0;
 }
 
 .highlightTable .ui-datatable-odd:hover {
-    background: #c9c9c9;
+    background: #F0F0F0;
 }
 
 .nonClickTable .ui-datatable-even {

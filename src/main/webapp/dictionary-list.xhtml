@@ -12,7 +12,7 @@
 <ui:composition template="layout.xhtml">
 	<ui:define name="content">
 		<h:form id="form">
-			<p:panel header="Dictionary">
+			<p:panel header="DICTIONARY">
 				<p:dataTable id="table"
 							 var="dictionaryEntry"
 							 value="#{dictionaryList.dictionary}"
@@ -22,8 +22,8 @@
 							 rows="25"
 							 styleClass="root_table highlightTable"
 				>
-					<p:column headerText="Name">#{dictionaryEntry.abbreviation}</p:column>
-					<p:column headerText="Explanation">#{dictionaryEntry.explanation}</p:column>
+					<p:column headerText="Abbreviation">#{dictionaryEntry.abbreviation}</p:column>
+					<p:column headerText="Full text">#{dictionaryEntry.explanation}</p:column>
 					<p:column headerText="Description">#{dictionaryEntry.notes}</p:column>
 				</p:dataTable>
 			</p:panel>
