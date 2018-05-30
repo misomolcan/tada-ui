@@ -84,8 +84,13 @@ body {
 }
 
 #topBannerCenteredSearch {
-    padding: 100px 84px 60px;
+    padding: 100px 84px 60px !important;
     text-align: center;
+}
+
+.abbreviationResultContent {
+    padding: 100px 84px 60px !important;
+    text-align: left;
 }
 
 #topBannerCenteredSearch .searchTitle {
