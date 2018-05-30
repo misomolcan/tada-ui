@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>tada-ui</name>
+	<abbreviation>tada-ui</abbreviation>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -47,9 +47,9 @@
 
 		<!-- Database dependencies -->
 		<dependency>
-			<groupId>org.hsqldb</groupId>
-			<artifactId>hsqldb</artifactId>
-			<version>2.3.4</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.6</version>
 		</dependency>
 		<dependency>
 			<groupId>org.flywaydb</groupId>
