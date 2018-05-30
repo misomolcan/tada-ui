@@ -14,14 +14,9 @@
 		<h:form id="form">
 			<p:panel header="Products List">
 				<p:dataTable id="table" var="dictionaryEntry" value="#{dictionaryList.dictionary}">
-					<p:column>
-						<f:facet name="header"># Id</f:facet>
-						<h:outputText value="#{dictionaryEntry.id}" />
-					</p:column>
-					<p:column>
-						<f:facet name="header">Name</f:facet>
-						<h:outputText value="#{dictionaryEntry.abbreviation}" />
-					</p:column>
+					<p:column headerText="Name">#{dictionaryEntry.abbreviation}</p:column>
+					<p:column headerText="Explanation">#{dictionaryEntry.explanation}</p:column>
+					<p:column headerText="Description">#{dictionaryEntry.notes}</p:column>
 				</p:dataTable>
 			</p:panel>
 		</h:form>
