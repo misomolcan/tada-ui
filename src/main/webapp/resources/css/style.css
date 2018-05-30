@@ -84,7 +84,7 @@ body {
 }
 
 #topBannerCenteredSearch {
-    padding: 100px 84px 60px !important;
+    padding: 70px 84px 60px !important;
     text-align: center;
 }
 
@@ -1201,12 +1201,14 @@ ul.ui-menu-child {
 
 .newSuggestionInputText {
     width: 100%;
+    height: 30px;
+    margin-bottom: 15px;
 }
 
 .newSuggestionOutputTextColumn {
-    width: 20%;
+    width: 10%;
 }
 
-.newSuggestionPanelGrid {()
+.newSuggestionPanelGrid {
     width: 100%;
 }
