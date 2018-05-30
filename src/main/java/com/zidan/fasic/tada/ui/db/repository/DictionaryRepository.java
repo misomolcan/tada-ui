@@ -12,8 +12,12 @@ import java.util.List;
 public interface DictionaryRepository extends JpaRepository<DictionaryEntity, Long> {
     DictionaryEntity findByAbbreviation(String abbreviation);
 
-    @Query("select entity from DictionaryEntity entity where entity.abbreviation like ?1")
+    @Query("select entity from DictionaryEntity entity where entity.abbreviation like ?1 and entity.status='confirmed' ")
     List<DictionaryEntity> findByAbbreviationLike(String abbreviation);
 
     DictionaryEntity findByAbbreviationAndExplanationAndNotes(String abbreviation, String explanation, String notes);
+
+    @Query("select entity from DictionaryEntity  entity " +
+            "where entity.abbreviation like ?1 and entity.status='suggested' order by entity.hitcount desc ")
+    List<DictionaryEntity> findAllSuggestionsLike(String abbreviation);
 }

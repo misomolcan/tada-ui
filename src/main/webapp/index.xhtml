@@ -10,8 +10,8 @@
         <ui:define name="content">
             <h:form id="indexForm">
                 <p:panel id="abbreviationResult" styleClass="blankPanel">
-                    <p:panel rendered="#{indexController.renderResult}" style="margin: 20px">
-                        <h:outputText value="Search results:"/><br/><br/>
+                    <p:panel rendered="#{indexController.renderResult}" style="margin: 20px" styleClass="">
+                        <h:outputText value="Search results for '#{indexController.searchValue}':"/><br/><br/>
 
                         <h:outputText value="Not found"
                                       rendered="#{indexController.entity.status == null}"
