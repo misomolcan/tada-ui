@@ -4,12 +4,9 @@ import com.zidan.fasic.tada.ui.db.entity.DictionaryEntity;
 import com.zidan.fasic.tada.ui.db.repository.DictionaryRepository;
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.el.ELBeanName;
-import org.primefaces.push.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
-import java.sql.Timestamp;
 
 @Scope(value = "session")
 @Component(value = "newSuggerstionController")
@@ -19,7 +16,8 @@ public class NewSuggestionController {
 
     @Autowired
     private DictionaryRepository productRepository;
-
+    @Autowired
+    UserController userController;
     private String abbreviation;
     private String explanation;
     private String notes;
@@ -33,11 +31,14 @@ public class NewSuggestionController {
             dictionaryEntity.setAbbreviation(abbreviation);
             dictionaryEntity.setExplanation(explanation);
             dictionaryEntity.setNotes(notes);
-
             dictionaryEntity.setHitcount(1L);
             dictionaryEntity.setStatus(Statuses.SUGGESTED.name);
         }
-
+        if (userController.isLoggedIn()) {
+            dictionaryEntity.setStatus(Statuses.CONFIRMED.name);
+        } else {
+            dictionaryEntity.setStatus(Statuses.SUGGESTED.name);
+        }
         productRepository.save(dictionaryEntity);
         return "/index.xhtml?faces-redirect=true";
     }
