@@ -3,7 +3,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:cc="http://java.sun.com/jsf/composite/templates">
 <body>
 <ui:composition>
     <div id="headerLogo">
@@ -13,8 +14,10 @@
         </p:link>
         <p:growl id="growl" life="2000" />
         <p:outputLabel styleClass="rightText" value="TADA"/>
-        <p:commandLink rendered="#{!userController.loggedIn}" id="loginButton" styleClass="rightText" value="Login" update="loginButton, logoutButton" onclick="PF('dlg').show();" title="Login" />
-        <p:commandLink rendered="#{userController.loggedIn}" id="logoutButton" styleClass="rightText" value="Logout" update="loginButton, logoutButton" actionListener="#{userController.logout}" title="Login" />
+        <h:form id="loginButtonForm">
+            <p:commandLink rendered="#{!userController.loggedIn}" id="loginButton" styleClass="rightText" style="font-size: 0.6em;" value="(Login)" update="loginButton, logoutButton" onclick="PF('dlg').show();" title="Login" />
+            <p:commandLink rendered="#{userController.loggedIn}" ajax="false" id="logoutButton" styleClass="rightText" style="font-size: 0.6em;" value="(Logout)" update="loginButton, logoutButton" actionListener="#{userController.logout}" title="Login" />
+        </h:form>
     </div>
     <div id="topBanner">
         <div id="topBannerCenteredSearch">
@@ -25,18 +28,21 @@
             </h:form>
         </div>
     </div>
+    <cc:menu/>
     <p:dialog header="Login" widgetVar="dlg" resizable="false">
-        <h:panelGrid columns="2" cellpadding="5">
-            <h:outputLabel for="username" value="Username:" />
-            <p:inputText id="username" value="#{userController.userName}" required="true" label="username" />
+        <h:form id="loginDialogForm">
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputLabel for="username" value="Username:" />
+                <p:inputText id="username" value="#{userController.userName}" required="true" label="username" />
 
-            <h:outputLabel for="password" value="Password:" />
-            <p:password id="password" value="#{userController.userPassword}" required="true" label="password" />
-            <f:facet name="footer">
-                <p:commandButton value="Login" update="growl, loginButton, logoutButton" actionListener="#{userController.login}"
-                                 oncomplete="handleLoginRequest(xhr, status, args)" />
-            </f:facet>
-        </h:panelGrid>
+                <h:outputLabel for="password" value="Password:" />
+                <p:password id="password" value="#{userController.userPassword}" required="true" label="password" />
+                <f:facet name="footer">
+                    <p:commandButton value="Login" ajax="false" update="growl, loginButtonForm:loginButton, loginButtonForm:logoutButton" actionListener="#{userController.login}"
+                                     oncomplete="handleLoginRequest(xhr, status, args)" />
+                </f:facet>
+            </h:panelGrid>
+        </h:form>
     </p:dialog>
     <script type="text/javascript">
         function handleLoginRequest(xhr, status, args) {
