@@ -10,8 +10,5 @@ import org.springframework.data.jpa.repository.Query;
 public interface DictionaryRepository extends JpaRepository<DictionaryEntity, Long> {
     DictionaryEntity findByAbbreviation(String abbreviation);
 
-    @Query("select entity from DictionaryEntity entity where entity.abbreviation=?1 and entity.status='confirmed'")
-    DictionaryEntity findByAbbreviationConfirmed(String abbreviation);
-
     DictionaryEntity findByAbbreviationAndExplanationAndNotes(String abbreviation, String explanation, String notes);
 }
