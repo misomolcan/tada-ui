@@ -28,11 +28,10 @@
             </h:form>
         </div>
     </div>
-    <p:panel id="abbreviationResult" styleClass="blankPanel">
-        <h:form id="abbreviationResultForm">
+    <h:form id="abbreviationResultForm">
+        <p:panel id="abbreviationResult" styleClass="blankPanel">
             <p:panel rendered="#{indexController.renderResult}" style="margin: 20px">
                 <h:outputText value="Search results:"/><br/><br/>
-
                 <h:outputText value="Not found"
                               rendered="#{indexController.entity.status == null}"
                               style="font-size: 20px"/>
@@ -51,8 +50,8 @@
                               rendered="#{indexController.entity.status == 'confirmed'}"
                               style="font-size: 20px"/>
             </p:panel>
-        </h:form>
-    </p:panel>
+        </p:panel>
+    </h:form>
     <cc:menu/>
     <p:dialog header="Login" widgetVar="dlg" resizable="false">
         <h:form id="loginDialogForm">
