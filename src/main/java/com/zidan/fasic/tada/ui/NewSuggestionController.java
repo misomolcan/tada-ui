@@ -35,7 +35,7 @@ public class NewSuggestionController {
             dictionaryEntity.setNotes(notes);
 
             dictionaryEntity.setHitcount(1L);
-            dictionaryEntity.setStatus(Statuses.SUGGESTED.name());
+            dictionaryEntity.setStatus(Statuses.SUGGESTED.name);
         }
 
         productRepository.save(dictionaryEntity);

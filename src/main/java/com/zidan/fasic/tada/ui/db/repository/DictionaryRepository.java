@@ -18,6 +18,6 @@ public interface DictionaryRepository extends JpaRepository<DictionaryEntity, Lo
     DictionaryEntity findByAbbreviationAndExplanationAndNotes(String abbreviation, String explanation, String notes);
 
     @Query("select entity from DictionaryEntity  entity " +
-            "where entity.abbreviation like ?1 and entity.status='suggested' order by entity.hitcount desc ")
+            "where entity.abbreviation like ?1 and (entity.status='suggested' or entity.status='requested') order by entity.hitcount desc ")
     List<DictionaryEntity> findAllSuggestionsLike(String abbreviation);
 }

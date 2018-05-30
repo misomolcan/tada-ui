@@ -48,7 +48,7 @@ public class SearchController {
         DictionaryEntity dictionaryEntity = new DictionaryEntity();
         dictionaryEntity.setAbbreviation(searchValue);
         dictionaryEntity.setHitcount(1L);
-        dictionaryEntity.setStatus(Statuses.REQUESTED.name());
+        dictionaryEntity.setStatus(Statuses.REQUESTED.name);
         dictionaryRepository.save(dictionaryEntity);
         clearVariables();
         RequestContext.getCurrentInstance().update("searchForm:SearchValue");
