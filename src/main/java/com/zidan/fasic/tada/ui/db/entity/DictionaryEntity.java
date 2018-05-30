@@ -7,18 +7,17 @@ import java.sql.Timestamp;
  * Created by viktor on 30.5.2018.
  */
 @Entity
-@Table(name = "dictionary", schema = "tada")
+@Table(name = "dictionary", schema = "tada", catalog = "")
 public class DictionaryEntity {
     private Integer id;
     private String abbreviation;
     private String explanation;
     private String notes;
-    private String action;
+    private String status;
     private Timestamp inserted;
     private Long hitcount;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     public Integer getId() {
         return id;
@@ -59,13 +58,13 @@ public class DictionaryEntity {
     }
 
     @Basic
-    @Column(name = "action", nullable = false, length = 45)
-    public String getAction() {
-        return action;
+    @Column(name = "status", nullable = false, length = 200)
+    public String getStatus() {
+        return status;
     }
 
-    public void setAction(String action) {
-        this.action = action;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Basic
@@ -99,7 +98,7 @@ public class DictionaryEntity {
         if (abbreviation != null ? !abbreviation.equals(that.abbreviation) : that.abbreviation != null) return false;
         if (explanation != null ? !explanation.equals(that.explanation) : that.explanation != null) return false;
         if (notes != null ? !notes.equals(that.notes) : that.notes != null) return false;
-        if (action != null ? !action.equals(that.action) : that.action != null) return false;
+        if (status != null ? !status.equals(that.status) : that.status != null) return false;
         if (inserted != null ? !inserted.equals(that.inserted) : that.inserted != null) return false;
         if (hitcount != null ? !hitcount.equals(that.hitcount) : that.hitcount != null) return false;
 
@@ -112,7 +111,7 @@ public class DictionaryEntity {
         result = 31 * result + (abbreviation != null ? abbreviation.hashCode() : 0);
         result = 31 * result + (explanation != null ? explanation.hashCode() : 0);
         result = 31 * result + (notes != null ? notes.hashCode() : 0);
-        result = 31 * result + (action != null ? action.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
         result = 31 * result + (inserted != null ? inserted.hashCode() : 0);
         result = 31 * result + (hitcount != null ? hitcount.hashCode() : 0);
         return result;
