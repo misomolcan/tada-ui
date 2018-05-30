@@ -16,7 +16,7 @@
         <p:outputLabel styleClass="rightText" value="TADA"/>
         <h:form id="loginButtonForm">
             <p:commandLink rendered="#{!userController.loggedIn}" id="loginButton" styleClass="rightText" style="font-size: 0.6em; margin-right:10px;" value="(Login)" update="loginButton, logoutButton" onclick="PF('dlg').show();" title="Login" />
-            <p:commandLink rendered="#{userController.loggedIn}" ajax="false" id="logoutButton" styleClass="rightText" style="font-size: 0.6em;" value="(Logout)" update="loginButton, logoutButton" actionListener="#{userController.logout}" title="Login" />
+            <p:commandLink rendered="#{userController.loggedIn}" ajax="false" id="logoutButton" styleClass="rightText" style="font-size: 0.6em; margin-right:10px;" value="(Logout)" update="loginButton, logoutButton" actionListener="#{userController.logout}" title="Login" />
         </h:form>
     </div>
     <div id="topBanner">
