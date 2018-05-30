@@ -74,21 +74,24 @@ body {
     color: white;
 }
 
-.centeredSearch {
-    position: absolute;
-    top: 200px;
-    left: 50%;
-    transform: translate(-50%, -50%);
+#topBanner {
+    background-image: url("/resources/images/TADA_APP_BG_PIC.jpg");
+    width: 100%;
+    height: 300px;
 }
 
-.centeredSearch .searchTitle {
+#topBannerCenteredSearch {
+    padding: 100px 84px 60px;
+}
+
+#topBannerCenteredSearch .searchTitle {
     font-size: xx-large;
 }
 
-.centeredSearch .searchBox {
-    width: 50%;
-    max-width: 250px;
-    height: 25px;
+.searchBox {
+    width: 100%;
+    height: 30px;
+    margin-bottom: 15px;
 }
 
 .menu {
@@ -309,10 +312,18 @@ body {
 }
 
 .ui-datatable-even {
-    background: #ffffff;
+    background: #dbdbdb;
 }
 
 .ui-datatable-odd {
+    background: #ebebeb;
+}
+
+.root_table .ui-datatable-even {
+    background: #ffffff;
+}
+
+.root_table .ui-datatable-odd {
     background: #ffffff;
 }
 

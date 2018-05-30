@@ -13,6 +13,9 @@
 	<ui:define name="content">
 		<h:form id="form">
 			<p:panel header="DICTIONARY">
+				<div class="centeredSearch">
+					<p:inputText placeholder="Search" styleClass="searchBox"/>
+				</div>
 				<p:dataTable id="table"
 							 var="dictionaryEntry"
 							 value="#{dictionaryList.dictionary}"
@@ -20,7 +23,7 @@
 							 paginatorAlwaysVisible="false"
 							 paginatorPosition="bottom"
 							 rows="25"
-							 styleClass="root_table highlightTable"
+							 styleClass="root_table"
 				>
 					<p:column headerText="Abbreviation">#{dictionaryEntry.abbreviation}</p:column>
 					<p:column headerText="Full text">#{dictionaryEntry.explanation}</p:column>
