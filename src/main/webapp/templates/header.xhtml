@@ -23,32 +23,32 @@
         <div id="topBannerCenteredSearch">
             <h:form id="searchForm">
                 <h:outputText value="Enter the abbreviation here to search" styleClass="searchTitle"/><br/><br/>
-                <p:inputText placeholder="Search" styleClass="searchBox" value="#{indexController.searchValue}"/>
-                <p:commandButton value="Search" actionListener="#{indexController.search}" style="height: 35px"/>
+                <p:inputText placeholder="Search" styleClass="searchBox" value="#{searchController.searchValue}"/>
+                <p:commandButton value="Search" actionListener="#{searchController.search}" style="height: 35px"/>
             </h:form>
         </div>
     </div>
     <h:form id="abbreviationResultForm">
-        <p:panel id="abbreviationResult" styleClass="blankPanel">
-            <p:panel rendered="#{indexController.renderResult}" style="margin: 20px">
-                <h:outputText value="Search results:"/><br/><br/>
-                <h:outputText value="Not found"
-                              rendered="#{indexController.entity.status == null}"
-                              style="font-size: 20px"/>
-                <p:commandButton value="Request explanation"
-                                 actionListener="#{indexController.explain}"
-                                 rendered="#{indexController.entity.status == null}"/>
-
-                <h:outputText value="Not found, but this abbreviation was already requested"
-                              rendered="#{indexController.entity.status == 'requested' or indexController.entity.status == 'suggested'}"
-                              style="font-size: 20px"/>
-
-                <h:outputText value="#{indexController.entity.explanation}"
-                              rendered="#{indexController.entity.status == 'confirmed'}"
-                              style="font-size: 20px"/>
-                <h:outputText value="#{indexController.entity.notes}"
-                              rendered="#{indexController.entity.status == 'confirmed'}"
-                              style="font-size: 20px"/>
+        <p:panel id="abbreviationResult" styleClass="abbreviationResult">
+            <p:panel styleClass="abbreviationResultContent" header="Search results:" rendered="#{searchController.renderResult}">
+                <p:panel rendered="#{searchController.entity.status == null}" style="margin-top: 5px;">
+                    <h:outputText value="Not found"
+                                  style="font-size: 20px"/>
+                    <br />
+                    <p:commandButton value="Request explanation"
+                                     actionListener="#{searchController.explain}"/>
+                </p:panel>
+                <p:panel rendered="#{searchController.entity.status == 'requested' or searchController.entity.status == 'suggested'}" style="margin-top: 5px;">
+                    <h:outputText value="Not found, but this abbreviation was already requested"
+                                  style="font-size: 20px"/>
+                </p:panel>
+                <p:panel rendered="#{searchController.entity.status == 'confirmed'}" style="margin-top: 5px;">
+                    <h:outputText value="#{searchController.entity.explanation}"
+                                  style="font-size: 20px"/>
+                    <br />
+                    <h:outputText value="#{searchController.entity.notes}"
+                                  style="font-size: 15px; font-style: italic; padding-left: 20px;"/>
+                </p:panel>
             </p:panel>
         </p:panel>
     </h:form>
