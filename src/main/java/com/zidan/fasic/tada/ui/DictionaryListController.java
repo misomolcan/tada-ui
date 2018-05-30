@@ -16,7 +16,7 @@ import java.util.List;
 @Scope(value = "session")
 @Component(value = "dictionaryList")
 @ELBeanName(value = "dictionaryList")
-@Join(path = "/", to = "/dictionary-list.jsf")
+@Join(path = "/dictionary", to = "/dictionary-list.jsf")
 public class DictionaryListController {
 
     @Autowired
