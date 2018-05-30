@@ -18,18 +18,18 @@
                     <p:inputText id="abbreviation"
                                  value="#{newSuggerstionController.abbreviation}"
                                  styleClass="newSuggestionInputText"/>
-                    <p:outputLabel for="fullText"
-                                   value="Full text: "/>
-                    <p:inputText id="fullText"
-                                 value="#{newSuggerstionController.fullText}"
+                    <p:outputLabel for="explanation"
+                                   value="Explanation: "/>
+                    <p:inputText id="explanation"
+                                 value="#{newSuggerstionController.explanation}"
                                  styleClass="newSuggestionInputText"/>
-                    <p:outputLabel for="description"
-                                   value="Description: "/>
-                    <p:inputText id="description"
-                                 value="#{newSuggerstionController.description}"
+                    <p:outputLabel for="notes"
+                                   value="Notes: "/>
+                    <p:inputText id="notes"
+                                 value="#{newSuggerstionController.notes}"
                                  styleClass="newSuggestionInputText"/>
-                    <h:commandButton value="Confirm"
-                                     action="#{newSuggerstionController.confirm}"/>
+                    <h:commandButton value="Add suggestion"
+                                     action="#{newSuggerstionController.addSuggestion}"/>
                 </h:panelGrid>
             </p:panel>
         </h:form>
