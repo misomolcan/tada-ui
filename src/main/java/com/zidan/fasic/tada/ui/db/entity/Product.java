@@ -1,4 +1,4 @@
-package com.zidan.fasic.tada.ui;
+package com.zidan.fasic.tada.ui.db.entity;
 
 import lombok.Data;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ public class Product {
 
     @Column
     private BigDecimal price;
-    protected Product() {
+    public Product() {
     }
 
     public Product(String name, BigDecimal price) {

@@ -1,5 +1,7 @@
 package com.zidan.fasic.tada.ui;
 
+import com.zidan.fasic.tada.ui.db.entity.Product;
+import com.zidan.fasic.tada.ui.db.repository.ProductRepository;
 import org.ocpsoft.rewrite.annotation.Join;
 import org.ocpsoft.rewrite.annotation.RequestAction;
 import org.ocpsoft.rewrite.el.ELBeanName;
