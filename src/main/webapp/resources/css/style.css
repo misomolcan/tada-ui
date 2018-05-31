@@ -1189,8 +1189,8 @@ ul.ui-menu-child {
 .searchButton {
     width: 150px;
     height: 60px;
-    background: #E20074 !important;
-    color: #FFFFFF !important;
+    /*background: #E20074 !important;*/
+    /*color: #FFFFFF !important;*/
 }
 
 .menuName {
