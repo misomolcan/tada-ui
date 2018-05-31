@@ -1212,3 +1212,13 @@ ul.ui-menu-child {
 .newSuggestionPanelGrid {
     width: 100%;
 }
+
+.searchButton {
+    height: 60px;
+    width: 120px;
+    background: #e5007d;
+}
+
+.searchButton .ui-button-text {
+    color: white;
+}
