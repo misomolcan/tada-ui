@@ -62,15 +62,13 @@
                     </p:column>
                     <p:column headerText="Action">
                         <h:panelGroup id="actionsPanel">
-                            <p:commandButton id="confirm" icon="fa fa-check"
+                            <p:commandButton id="confirm" icon="ui-icon-check"
                                              actionListener="#{approveSuggerstionController.confirm(dictionaryEntry)}"
-                                             update="table"
-                                             >
+                                             update="table">
                             </p:commandButton>
-                            <p:commandButton id="deny" icon="fa fa-close"
+                            <p:commandButton id="deny" icon="ui-icon-cancel"
                                              actionListener="#{approveSuggerstionController.deny(dictionaryEntry)}"
-                                             update="table"
-                                            >
+                                             update="table">
                             </p:commandButton>
                         </h:panelGroup>
 
