@@ -89,7 +89,7 @@ body {
 }
 
 .abbreviationResultContent {
-    padding: 100px 84px 60px !important;
+    padding: 20px 84px 60px !important;
     text-align: left;
 }
 
@@ -1184,6 +1184,13 @@ ul.ui-menu-child {
 
 .boxMenuButton span {
     color: #6e6e6e;
+}
+
+.searchButton {
+    width: 150px;
+    height: 60px;
+    /*background: #E20074 !important;*/
+    /*color: #FFFFFF !important;*/
 }
 
 .menuName {
